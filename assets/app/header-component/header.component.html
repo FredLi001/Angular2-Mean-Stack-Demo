@@ -1,0 +1,16 @@
+<nav class="navbar navbar-inverse bg-faded" id="header">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a [routerLink]="['']" class="navbar-brand">Chef's Table</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav">
+                <li routerLinkActive="active"><a [routerLink]="['']">Home</a></li>
+                <li routerLinkActive="active"><a href="#menu">About</a></li>
+                <li routerLinkActive="active"><a [routerLink]="['/user']">User</a></li>
+                <li routerLinkActive="active"><a [routerLink]="['/owner']">Owner</a></li>
+            </ul>
+
+        </div>
+    </div>
+</nav>

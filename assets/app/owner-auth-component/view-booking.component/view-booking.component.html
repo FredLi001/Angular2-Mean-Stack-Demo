@@ -1,0 +1,58 @@
+
+
+<div class="container">
+    <h2>Booking List</h2>
+    <p>Click detail button to see more detail</p>
+    <table class="table  table-hover">
+        <thead>
+        <tr>
+            <th>Username</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Table No.</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <tr *ngFor="let item of this.bItems;let i = index"
+            [ngClass]="{'active':i%15==0||i%15==1||i%15==2,
+            'success': i%15==3||i%15==4||i%15==5,
+            'danger':i%15==6||i%15==7||i%15==8,
+            'info': i%15==9||i%15==10||i%15==11,
+            'warning': i%15==12||i%15==13||i%15==14
+            }">
+            <td>{{item.name}}</td>
+            <td>{{item.date}}</td>
+            <td>{{item.time}}</td>
+            <td>{{item.tablenumber}}</td>
+            <td><button class="btn btn-primary" (click)="onDetail(i)" data-toggle="modal" data-target="#myModal">detail</button></td>
+        </tr>
+
+        </tbody>
+    </table>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header alert-info">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">User Detail</h4>
+            </div>
+            <div class="modal-body">
+                <p><strong>UserName: </strong>{{name}}</p>
+                <p><strong>Tel: </strong>{{tel}}</p>
+                <p><strong>Date: </strong>{{date}}</p>
+                <p><strong>Time: </strong>{{time}}</p>
+                <p><strong>Table No: </strong>{{tablenumber}}</p>
+                <p><strong>Party Size: </strong>{{partysize+' people'}}</p>
+                <p><strong>Confirmation Code: </strong>{{confirmationcode}}</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

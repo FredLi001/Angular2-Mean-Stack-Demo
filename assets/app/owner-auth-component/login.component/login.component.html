@@ -1,0 +1,29 @@
+<div class="container">
+    <div class="row spacing"></div>
+    <div class="col-md-8 col-md-offset-2">
+        <form (ngSubmit)="onSubmit1(f)" #f="ngForm">
+            <div class="form-group">
+                <label for="owneremail">Email</label>
+                <input type="email" id="owneremail" class="form-control" ngModel name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="ownerpassword">Password</label>
+                <input type="password" id="ownerpassword" class="form-control" ngModel name="password" required>
+            </div>
+            <button class="btn btn-primary" type="submit" [disabled]="f.invalid" (click)="onLogin(f)">login</button>
+            <span></span>
+            <button class="btn btn-danger" type="button" [disabled]="!isLogin()" (click)="onLogout(f)">logout</button>&nbsp;&nbsp;<strong>all fields required</strong>
+        </form>
+
+    </div>
+
+</div>
+<div class="row spacing"></div>
+<div class="alert alert-success" *ngIf="this.loginSuccess && this.plus">
+    <strong style="margin: auto">Login Success!</strong></div>
+<div class="alert alert-danger" *ngIf="!this.loginSuccess &&this.plus">
+    <strong style="margin: auto">Login Failed!</strong>
+</div>
+<div class="alert alert-warning" *ngIf="this.logout">
+    <strong style="margin: auto">You Logout!</strong>
+</div>

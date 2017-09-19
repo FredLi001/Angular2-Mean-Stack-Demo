@@ -1,0 +1,194 @@
+<div class="col-md-8 col-md-offset-2">
+  <form (ngSubmit)="onSubmit1(f)" #f="ngForm">
+    <div class="form-group">
+      <label for="confirmationcode1">Confirmation Code</label>
+      <input type="number" id="confirmationcode1" class="form-control" ngModel name="confirmationcode1" required>
+    </div>
+    <button class="btn btn-primary" type="submit" [disabled]="f.invalid" data-toggle="modal" data-target="#myModal">Submit</button>&nbsp;&nbsp;<strong>all fields required</strong>
+
+  </form>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="myModal" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div *ngIf="!this.showF" class="modal-header alert-danger">
+        <button type="button" class="close" data-dismiss="modal" (click)="reloadPage()">&times;</button>
+        <h4 class="modal-title">Reservation Error</h4>
+      </div>
+      <div *ngIf="this.showF" class="modal-header alert-success">
+        <button type="button" class="close" data-dismiss="modal" (click)="reloadPage()">&times;</button>
+        <h4 class="modal-title">Your Reservation</h4>
+      </div>
+      <div class="modal-body">
+
+        <p *ngIf="!this.showF">Wrong Confirmation Code, please try another one</p>
+
+
+
+
+
+
+
+
+
+
+
+        <!-- update form -->
+        <div class="alert alert-success" *ngIf="this.canUpdate && this.plus">
+          <strong>Update Success!</strong> Your reservation has been changed. Confirmation code is {{this.onFlyItem.confirmationCode}}
+        </div>
+        <div class="alert alert-danger" *ngIf="!this.canUpdate &&this.plus">
+          <strong>Update Failed!</strong> Time is not available. Please change another time.
+        </div>
+        <!-- delete alerts -->
+        <div class="alert alert-success" *ngIf="this.canDelete && this.deleteSign">
+          <strong>Cancel Success!</strong> Your reservation has been cancelled.
+        </div>
+        <div class="alert alert-danger" *ngIf="!this.canDelete &&this.deleteSign">
+          <strong>Cancel Failed!</strong> Please contact our front desk.
+        </div>
+
+
+
+        <div *ngIf="this.showF">
+        <form (ngSubmit)="onSubmit2(f)" #f="ngForm">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" class="form-control"
+                   name="name"
+                   disabled [ngModel]="this.onFlyItem.name">
+          </div>
+
+          <div class="form-group">
+            <label for="tel">Tel</label>
+            <input type="text" id="tel" class="form-control" name="tel" [ngModel]="this.onFlyItem.tel"
+                   disabled>
+          </div>
+
+          <div class="form-group">
+            <label for="date">Date</label>
+            <input type="text" id="date" class="form-control" name="date" [ngModel]="this.onFlyItem.date"
+                    disabled>
+            <label>change to</label>
+            <input type="date" id="newDate" class="form-control" name="newDate" required ngModel>
+          </div>
+
+          <div class="form-group">
+            <label for="time">Time</label>
+            <input type="text" id="time" class="form-control"
+                   name="time" [ngModel]="this.onFlyItem.time" disabled>
+            <label>change to</label>
+            <select id="newTime" class="form-control" name="newTime"  required ngModel>
+              <option value="11:30">11:30 AM</option>
+              <option value="12:00" selected>12:00 PM</option>
+              <option value="13:00">1:00 PM</option>
+              <option value="13:30">1:30 PM</option>
+              <option value="14:00">2:00 PM</option>
+              <option value="14:30">2:30 PM</option>
+              <option value="15:00">3:00 PM</option>
+              <option value="15:30">3:30 PM</option>
+              <option value="16:00">4:00 PM</option>
+              <option value="16:30">4:30 PM</option>
+              <option value="17:00">5:00 PM</option>
+              <option value="17:30">5:30 PM</option>
+              <option value="18:00">6:00 PM</option>
+              <option value="18:30">6:30 PM</option>
+              <option value="19:00">7:00 PM</option>
+              <option value="19:30">7:30 PM</option>
+              <option value="20:00">8:00 PM</option>
+              <option value="20:30">8:30 PM</option>
+              <option value="21:00">9:00 PM</option>
+              <option value="21:30">9:30 PM</option>
+              <option value="22:00">10:00 PM</option>
+              <option value="22:30">10:30 PM</option>
+              <option value="23:00">11:00 PM</option>
+              <option value="23:30">11:30 PM</option>
+              <option value="24:00">12:00 AM</option>
+
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="partysize">Party Size</label>
+            <input type="text" id="partysize" class="form-control"
+                   name="partysize" [ngModel]="this.onFlyItem.partysize+' people'" disabled>
+            <label>change to</label>
+            <br>
+            <!--<input type="text" id="partysize" class="form-control">-->
+            <select id="newPartysize" class="form-control" name="newPartysize" required ngModel>
+              <option value="1">1 people</option>
+              <option value="2" selected>2 people</option>
+              <option value="3">3 people</option>
+              <option value="4">4 people</option>
+              <option value="5">5 people</option>
+              <option value="6">6 people</option>
+              <option value="7">7 people</option>
+              <option value="8">8 people</option>
+              <option value="9">9 people</option>
+              <option value="10">10 people</option>
+              <option value="11">11 people</option>
+              <option value="12">12 people</option>
+              <option value="13">13 people</option>
+              <option value="14">14 people</option>
+              <option value="15">>14 people</option>
+            </select>
+          </div>
+
+
+
+          <!--<div class="form-group">
+            <label for="tablenumber">Table Number</label>
+            <input type="text" id="tablenumber" class="form-control">
+          </div>-->
+
+          <div class="form-group">
+            <label for="tablenumber">Table Number</label>
+            <input type="text" id="tablenumber" class="form-control"
+                   name="tablenumber" [ngModel]="'No.'+this.onFlyItem.tablenumber" disabled>
+            <!--<label>change to</label>
+
+            <br>-->
+            <!--<input type="text" id="partysize" class="form-control">-->
+            <!--<select id="newTablenumber"  class="form-control" name="newTablenumber" required ngModel>
+              <option value="1">No.1</option>
+              <option value="2">No.2</option>
+              <option value="3">No.3</option>
+              <option value="4">No.4</option>
+              <option value="5">No.5</option>
+              <option value="6">No.6</option>
+              <option value="7">No.7</option>
+              <option value="8">No.8</option>
+              <option value="9">No.9</option>
+              <option value="10">No.10</option>
+              <option value="11">No.11</option>
+              <option value="12">No.12</option>
+              <option value="13">No.13</option>
+              <option value="14">No.14</option>
+              <option value="15">No.15</option>
+              <option value="16">No.16</option>
+              <option value="17">No.17</option>
+              <option value="18">No.18</option>
+              <option value="19">No.19</option>
+              <option value="20">No.20</option>
+            </select>-->
+          </div>
+
+          <button class="btn btn-success" style="margin-left:168px;" type="submit" (click)="onUpdate(f)"
+                  [disabled]="f.invalid">Update</button>
+          <button class="btn btn-danger"  type="submit" (click)="onDelete(f)">Delete</button>
+
+
+        </form>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal" *ngIf="!this.showF">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>

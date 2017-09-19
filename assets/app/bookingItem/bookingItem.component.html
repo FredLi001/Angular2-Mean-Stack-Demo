@@ -1,0 +1,111 @@
+
+    <div class="col-lg-8 col-md-offset-2">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h4 class="panel-title">Your Reservation</h4>
+            </div>
+            <div class="panel-body">
+                <form [formGroup]="myForm">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" class="form-control"
+                               formControlName="name"
+                               disabled [ngModel]="bItem.name">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="tel">Tel</label>
+                        <input type="text" id="tel" class="form-control" formControlName="tel" [ngModel]="bItem.tel"
+                               disabled>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="date">Date</label>
+                        <input type="text" id="date" class="form-control" formControlName="date" [ngModel]="bItem.date"
+                               formControlName="date1" disabled>
+                        <label>change to</label>
+                        <input type="date" id="datechange" class="form-control" formControlName="date">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="time">Time</label>
+                        <input type="text" id="date2" class="form-control" formControlName="date"
+                               formControlName="time1" [ngModel]="bItem.time" disabled>
+                        <label>change to</label>
+                        <input type="time" id="time" class="form-control" formControlName="time">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="partysize">Party Size</label>
+                        <input type="text" id="date3" class="form-control" formControlName="date"
+                               formControlName="partysize1" [ngModel]="bItem.partysize+' people'" disabled>
+                        <label>change to</label>
+                        <br>
+                        <!--<input type="text" id="partysize" class="form-control">-->
+                        <select id="partysize" class="form-control" formControlName="partysize">
+                            <option value="1">1 people</option>
+                            <option value="2" selected>2 people</option>
+                            <option value="3">3 people</option>
+                            <option value="4">4 people</option>
+                            <option value="5">5 people</option>
+                            <option value="6">6 people</option>
+                            <option value="7">7 people</option>
+                            <option value="8">8 people</option>
+                            <option value="9">9 people</option>
+                            <option value="10">10 people</option>
+                            <option value="11">11 people</option>
+                            <option value="12">12 people</option>
+                            <option value="13">13 people</option>
+                            <option value="14">14 people</option>
+                            <option value="15">>14 people</option>
+                        </select>
+                    </div>
+
+                    <!--<div class="form-group">
+                      <label for="tablenumber">Table Number</label>
+                      <input type="text" id="tablenumber" class="form-control">
+                    </div>-->
+
+                    <div class="form-group">
+                        <label for="tablenumber">Table Number</label>
+                        <input type="text" id="date4" class="form-control" formControlName="date"
+                               formControlName="tablenumber1" [ngModel]="'No.'+bItem.tablenumber" disabled>
+                        <label>change to</label>
+
+                        <br>
+                        <!--<input type="text" id="partysize" class="form-control">-->
+                        <select id="tablenumber"  class="form-control" formControlName="tablenumber">
+                            <option value="1">No.1</option>
+                            <option value="2">No.2</option>
+                            <option value="3">No.3</option>
+                            <option value="4">No.4</option>
+                            <option value="5">No.5</option>
+                            <option value="6">No.6</option>
+                            <option value="7">No.7</option>
+                            <option value="8">No.8</option>
+                            <option value="9">No.9</option>
+                            <option value="10">No.10</option>
+                            <option value="11">No.11</option>
+                            <option value="12">No.12</option>
+                            <option value="13">No.13</option>
+                            <option value="14">No.14</option>
+                            <option value="15">No.15</option>
+                            <option value="16">No.16</option>
+                            <option value="17">No.17</option>
+                            <option value="18">No.18</option>
+                            <option value="19">No.19</option>
+                            <option value="20">No.20</option>
+                        </select>
+                    </div>
+
+                        <button class="btn btn-success" style="margin-left:168px;" type="submit" (click)="onUpdate()">Update</button>
+                        <button class="btn btn-danger"  type="submit" (click)="onDelete()" >Delete</button>
+
+
+                </form>
+            </div>
+            <div class="panel-footer">
+
+            </div>
+        </div>
+    </div>
